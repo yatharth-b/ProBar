@@ -1,0 +1,36 @@
+{
+  "name": "ProBar",
+  "version": "1.0",
+  "description": "Customize scrollbars",
+  "permissions": ["activeTab", "declarativeContent", "storage", "http://*/","https://*/"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/"],
+      "js": ["magic.js"]
+    },
+    {
+      "matches": ["http://*/"],
+      "js": ["popup.js"]
+    }
+  ],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "128": "images/logo128.png"
+    }
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  },
+  "manifest_version": 2
+}
