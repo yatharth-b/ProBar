@@ -59,6 +59,11 @@ apply.onclick = function() {
 
 
 reset.onclick = function() {
+  document.getElementById('thumb').value = 0;
+  document.getElementById('bar').value = 0;
+  document.getElementById('width').value = "pp";
+  document.getElementById('radius').value = "pp";
+
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
     chrome.storage.local.set({thumb: 0, bar: 0, width: "pp", radius: "pp"}, function() {

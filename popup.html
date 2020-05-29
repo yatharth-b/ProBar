@@ -11,24 +11,28 @@
       }
       .popup {
         width: 200px;
-        height: 300px;
+        height: auto;
       }
 
       .button {
         font-family: montserrat;
+      }
+
+      .color {
+        border: none;
       }
     </style>
   </head>
   <body>
     <div class="popup">
       <label for="thumb">Color of thumb:</label>
-      <input type="color" name="thumb" id="thumb" /><br />
+      <input type="color" name="thumb" id="thumb" class="color"/><br />
       <label for="tbar">Color of bar:</label>
-      <input type="color" name="bar" id="bar" /><br />
+      <input type="color" name="bar" id="bar" class="color" /><br />
       <label for="width">Width:</label>
       <input type="range" id="width" name="width" min="0" max="100" />
-      <label for="radius">Border radius:</label>
-      <input type="range" id="radius" name="radius" min="0" max="100" />
+      <label for="radius">Border radius:</label><br>
+      <input type="range" id="radius" name="radius" min="0" max="100" /><br>
       <button id="apply">Apply</button>
       <button id="reset">Reset</button>
     </div>
