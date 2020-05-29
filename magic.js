@@ -23,6 +23,7 @@ chrome.storage.local.get(['thumb', 'bar', 'width', 'radius'], function(data) {
 
     const css = document.createElement("style");
     css.innerHTML = theCSS;
+    css.className= "probar_custom_css";
     document.head.appendChild(css);
     console.log(css.isConnected);
 

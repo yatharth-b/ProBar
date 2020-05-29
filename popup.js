@@ -1,4 +1,16 @@
 let apply = document.getElementById("apply");
+let reset = document.getElementById("reset");
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  chrome.storage.local.get(['thumb', 'bar', 'width', 'radius'], function(data) {
+    document.getElementById('thumb').value = data.thumb;
+    document.getElementById('bar').value = data.bar;
+    document.getElementById('width').value = data.width;
+    document.getElementById('radius').value = data.radius;
+  });
+});
+
 
 apply.onclick = function() {
   let thumb = document.getElementById('thumb').value;
@@ -25,9 +37,10 @@ apply.onclick = function() {
   border-radius: ${radius}px;
   border: 3px solid var(--scrollbarBG);
   }`
-  
+
   let theCode = `function lol() {
     const css = document.createElement("style");
+    css.className= "probar_custom_css";
     css.innerHTML = ${JSON.stringify(theCSS)};
     document.head.appendChild(css);
   }
@@ -45,3 +58,15 @@ apply.onclick = function() {
 };
 
 
+reset.onclick = function() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+    chrome.storage.local.set({thumb: 0, bar: 0, width: "pp", radius: "pp"}, function() {
+      console.log("pp");
+    });
+
+    chrome.tabs.executeScript(
+        tabs[0].id,
+        {code: 'Array.from(document.querySelectorAll(".probar_custom_css")).forEach(x=>x.remove());'});
+  });
+};
