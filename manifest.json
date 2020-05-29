@@ -9,12 +9,8 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/"],
+      "matches": ["<all_urls>"],
       "js": ["magic.js"]
-    },
-    {
-      "matches": ["http://*/"],
-      "js": ["popup.js"]
     }
   ],
   "page_action": {

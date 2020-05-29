@@ -1,11 +1,11 @@
-
-
 let apply = document.getElementById("apply");
 
 apply.onclick = function() {
   let thumb = document.getElementById('thumb').value;
   let bar = document.getElementById('bar').value;
   let width = document.getElementById('width').value;
+  let radius = document.getElementById('radius').value;
+
   let theCSS = `html {
     --scrollbarBG: ${bar};
     --thumbBG: ${thumb};
@@ -22,7 +22,7 @@ apply.onclick = function() {
   }
   body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG) ;
-  border-radius: 6px;
+  border-radius: ${radius}px;
   border: 3px solid var(--scrollbarBG);
   }`
   
@@ -33,6 +33,11 @@ apply.onclick = function() {
   }
   lol();`
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+    chrome.storage.local.set({thumb: thumb, bar: bar, width: width, radius: radius}, function() {
+      console.log("pp");
+    });
+
     chrome.tabs.executeScript(
         tabs[0].id,
         {code: theCode});
